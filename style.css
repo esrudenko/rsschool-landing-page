@@ -20,7 +20,6 @@ li {
 
 a {
   text-decoration: none;
-  cursor: pointer;
 }
 
 :root {
@@ -58,7 +57,19 @@ body {
     transition: 0.3s all ease;  
 }
 
+a,
+.arrows,
+.header_icons_container {
+    cursor: pointer;
+}
+
 /* TYPOGRAPHY */
+
+p {
+    font-size: 1rem;
+    line-height: 150%;
+}
+
 .hero_title {
     font-size: 4.5rem;
     font-weight: 600;
@@ -67,9 +78,24 @@ body {
 
 .hero_text,
 .hero_btn {
-    font-size: 1rem;
-    line-height: 150%;
     margin: 2.5em 0 2.5em 0;
+}
+
+.favorite_title {
+    font-size: 3.75rem;
+    font-weight: 600;
+    line-height: 125%;
+}
+
+.favorite_content_title,
+.favorite_price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 125%;
+}
+
+.favorite_content_text {
+    text-align: center;
 }
 
 /* BUTTONS */
@@ -133,7 +159,6 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    cursor: pointer;
 
 }
 
@@ -178,7 +203,78 @@ body {
     color: var(--color-main-light);
     margin:  6.25em auto auto 6.25em;
 }
+
 /* favorite section */
+.favorite_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5em;
+    padding: 6.25em 0;
+}
+
+.favorite_slider {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--color-border-dark);
+}
+
+.arrow {
+    background: url(./img/icons/arrow-dark.png) no-repeat center center;
+    background-size: 24px 24px;
+    border-radius: 50%;
+    padding: 1.5em;
+}
+
+.icon_arrow_left {
+    transform: rotate(180deg);
+}
+
+.arrow:hover {
+    background: var(--color-border-primary) url(./img//icons/arrow-dark.png) no-repeat center center;
+}
+
+.favorite_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    max-width: 490px;
+}
+
+.favorite_img {
+    max-width: 480px;
+    max-height: 480px;
+    padding-bottom: 0.25em;
+}
+
+.controls_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75em;
+}
+
+.control {
+    width: 40px;
+    height: 4px;
+    border-radius: 6.25em;
+    background: var(--color-border-primary);
+}
+
+.control_active {
+    background: var(--color-border-dark);
+}
 /* about section */
 /* mobile_app section */
 /* FOOTER */
