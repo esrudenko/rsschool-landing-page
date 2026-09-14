@@ -15,56 +15,130 @@
   </head>
   <body>
     <div class="container">
-        <header class="header_container">
-            <img class="logo_img" src="./img/home-page/logo.png" alt="logo coffee house">
-            <nav>
-                <ul class="header_list">
-                    <li><a class="header_link" href="#favorite">Favorite coffee</a></li>
-                    <li><a class="header_link" href="#about">About</a></li>
-                    <li><a class="header_link" href="#mobile_app">Mobile app</a></li>
-                    <li><a class="header_link" href="#contacts">Contact us</a></li>
-                </ul>
-            </nav>
-            <div class="header_options">
-            <div class="theme_switch">
-                <div class="header_icons_container sun_icon" aria-label="sun icon to switch theme"></div>
-                <div class="header_icons_container moon_icon" aria-label="sun icon to switch theme"></div>
+      <header class="header_container">
+        <img
+          class="logo_img"
+          src="./img/home-page/logo.png"
+          alt="logo coffee house"
+        />
+        <nav>
+          <ul class="header_list">
+            <li><a class="header_link" href="#favorite">Favorite coffee</a></li>
+            <li><a class="header_link" href="#about">About</a></li>
+            <li><a class="header_link" href="#mobile_app">Mobile app</a></li>
+            <li><a class="header_link" href="#contacts">Contact us</a></li>
+          </ul>
+        </nav>
+        <div class="header_options">
+          <div class="theme_switch">
+            <div
+              class="header_icons_container sun_icon"
+              aria-label="sun icon to switch theme"
+              role="button"
+            ></div>
+            <div
+              class="header_icons_container moon_icon"
+              aria-label="sun icon to switch theme"
+              role="button"
+            ></div>
+          </div>
+          <div class="menu_link">
+            <a class="header_link" href=""
+              >Menu
+              <img src="./img/icons/coffee-cup.png" alt="icon cup of coffee"
+            /></a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section id="hero" class="hero_container">
+          <video class="hero_video" autoplay muted loop playsinline>
+            <source src="./video/hero-video.mp4" />
+          </video>
+          <div class="hero_content">
+            <h1 class="hero_title">
+              <span class="hightlight_text">Enjoy</span> premium coffee at our
+              charming cafe
+            </h1>
+            <p class="hero_text">
+              With its inviting atmosphere and delicious coffee options, the
+              Coffee House Resource is a popular destination for coffee lovers
+              and those seeking a warm and inviting space to enjoy their
+              favorite beverage.
+            </p>
+            <a class="hero_btn" href="">Menu</a>
+          </div>
+        </section>
+        <section id="favorite" class="favorite_container">
+          <h2 class="favorite_title">
+            Choose your <span class="hightlight_text">favorite</span> coffee
+          </h2>
+          <div class="favorite_slider">
+            <div class="arrows icon_arrow_left">
+              <img
+                class="arrow arrow-left"
+                src="./img/icons/arrow-dark.png"
+                alt="arrow-left"
+              />
             </div>
-            <div class="menu_link">
-                <a class="header_link" href="">Menu <img src="./img/icons/coffee-cup.png" alt="icon cup of coffee"></a>
+            <div class="favorite_content">
+              <img
+                class="favorite_img"
+                src="./img/home-page/coffee-slider-1.png"
+                alt=""
+              />
+              <h3 class="favorite_content_title">S’mores Frappuccino</h3>
+              <p class="favorite_content_text">
+                This new drink takes an espresso and mixes it with brown sugar
+                and cinnamon before being topped with oat milk.
+              </p>
+              <p class="favorite_price">$5.50</p>
             </div>
+            <div class="arrows icon_arrow_right">
+              <img
+                class="arrow arrow-right"
+                src="./img/icons/arrow-dark.png"
+                alt="arrow-right"
+              />
             </div>
-        </header>
-        <main>
-            <section id="hero" class="hero_container">
-                <video class="hero_video" autoplay muted loop playsinline>
-                    <source src="./video/hero-video.mp4">
-                </video>
-                <div class="hero_content">
-                    <h1 class="hero_title"><span class="hightlight_text">Enjoy</span> premium coffee at our charming cafe</h1>
-                    <p class="hero_text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
-                    <a class="hero_btn" href="">Menu</a>
-                </div>
-            </section>
-            <section id="favorite" class="favorite_container">
-                <h2 class="favorite_title">Choose your <span class="hightlight_text">favorite</span> coffee</h2>
-                <div class="favorite_slider">
-                    <div class="arrows icon_arrow_left"><img class="arrow arrow-left" src="./img/icons/arrow-dark.png" alt="arrow-left"></div>
-                    <div class="favorite_content">
-                        <img class="favorite_img" src="./img/home-page/coffee-slider-1.png" alt="">
-                        <h3 class="favorite_content_title">S’mores Frappuccino</h3>
-                        <p class="favorite_content_text">This new drink takes an espresso and mixes it with brown sugar and cinnamon before being topped with oat milk.</p>
-                        <p class="favorite_price">$5.50</p>
-                    </div>
-                    <div class="arrows icon_arrow_right"><img class="arrow arrow-right" src="./img/icons/arrow-dark.png" alt="arrow-right"></div>
-                </div>
-                <div class="controls_container">
-                    <div class="control control_active"></div>
-                    <div class="control"></div>
-                    <div class="control"></div>
-                </div>
-            </section>
-        </main>
+          </div>
+          <div class="controls_container">
+            <div class="control control_active"></div>
+            <div class="control"></div>
+            <div class="control"></div>
+          </div>
+        </section>
+        <section id="about">
+          <h2 class="about_title">
+            Resource is
+            <span class="hightlight_text">the perfect and cozy place</span>
+            where you can enjoy a variety of hot beverages, relax, catch up with
+            friends, or get some work done.
+          </h2>
+          <div class="about_gallery">
+            <img
+              class="img_1 gallery_img"
+              src="./img/home-page/about-1.jpg"
+              alt=""
+            />
+            <img
+              class="img_2 gallery_img"
+              src="./img/home-page/about-2.jpg"
+              alt=""
+            />
+            <img
+              class="img_3 gallery_img"
+              src="./img/home-page/about-3.jpg"
+              alt=""
+            />
+            <img
+              class="img_4 gallery_img"
+              src="./img/home-page/about-4.jpg"
+              alt=""
+            />
+          </div>
+        </section>
+      </main>
     </div>
     <script src="script.js"></script>
   </body>
