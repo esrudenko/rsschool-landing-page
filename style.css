@@ -1,0 +1,104 @@
+/* GENERAL STYLES */
+* {
+  margin: 0;
+  padding: 0;
+}dark
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+:root {
+    --color-main-light: #E1D4C9;
+    --color-text-dark: #403F3D;
+    --color-highlight: #B0907A;
+    --color-border-primary: #C1B6AD
+}
+
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  display: block;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.25rem 2.5rem 2.5rem 2.5rem;
+  background: var(--color-main-light);
+}
+
+/* HEADER */
+.header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo_img {
+    width: 6.25rem;
+    height: 3.75rem;
+}
+
+.header_list {
+    display: flex;
+    gap: 2.5em;
+}
+
+.header_link {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 150%;
+    color: var(--color-text-dark);
+}
+
+.header_options {
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.theme_switch {
+    display: flex;
+    gap: 0.5em;
+    padding: 0.25em;
+    border: 1px solid var(--color-border-primary);
+    border-radius: 6.25em;
+}
+
+.header_icons_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+        border-radius: 50%;
+    background: var(--color-highlight);
+}
+
+.header_icons {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.sun_icon {
+
+}
