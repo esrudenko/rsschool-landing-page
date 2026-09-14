@@ -2,7 +2,7 @@
 * {
   margin: 0;
   padding: 0;
-}dark
+}
 
 *,
 *::before,
@@ -25,15 +25,17 @@ a {
 
 :root {
     --color-main-light: #E1D4C9;
-    --color-text-dark: #403F3D;
+    --color-main-dark: #403F3D;
     --color-highlight: #B0907A;
-    --color-border-primary: #C1B6AD
+    --color-border-primary: #C1B6AD;
+    --color-border-dark: #665F55;
 }
 
 
 body {
   font-family: "Inter", sans-serif;
   font-weight: 400;
+  letter-spacing: 0%;
 }
 
 .container {
@@ -43,6 +45,43 @@ body {
   margin: 0 auto;
   padding: 1.25rem 2.5rem 2.5rem 2.5rem;
   background: var(--color-main-light);
+}
+
+.hightlight_text {
+    color: var(--color-highlight);
+    font-style: italic;
+}
+
+.moon_icon,
+.header_link,
+.hero_btn {
+    transition: 0.3s all ease;  
+}
+
+/* TYPOGRAPHY */
+.hero_title {
+    font-size: 4.5rem;
+    font-weight: 600;
+    line-height: 105%;
+}
+
+.hero_text,
+.hero_btn {
+    font-size: 1rem;
+    line-height: 150%;
+    margin: 2.5em 0 2.5em 0;
+}
+
+/* BUTTONS */
+.hero_btn {
+    color: var(--color-main-dark);
+    background: var(--color-main-light);
+    padding: 1.25em 4.876em 1.25em 4.876em;
+    border-radius: 6.25em;
+}
+
+.hero_btn:hover {
+    background: var(--color-main-light) url(./img/icons/coffee-cup.png) no-repeat right 3em center;
 }
 
 /* HEADER */
@@ -66,7 +105,11 @@ body {
     font-size: 1rem;
     font-weight: 600;
     line-height: 150%;
-    color: var(--color-text-dark);
+    color: var(--color-main-dark);
+}
+
+.header_link:hover {
+    border-bottom: 0.125em solid var(--color-main-dark);
 }
 
 .header_options {
@@ -89,16 +132,53 @@ body {
     align-items: center;
     width: 36px;
     height: 36px;
-        border-radius: 50%;
-    background: var(--color-highlight);
-}
-
-.header_icons {
-    width: 22px;
-    height: 22px;
+    border-radius: 50%;
     cursor: pointer;
+
 }
 
 .sun_icon {
-
+    background: var(--color-highlight) url(./img/icons/Sun.svg) no-repeat center center;
+    background-size: 22px 22px;
 }
+
+.moon_icon {
+    background: url(./img/icons/Moon-dark.svg) no-repeat center center;
+    background-size: 22px 22px;
+}
+
+.moon_icon:hover {
+    background: var(--color-border-dark) url(./img/icons/Moon-light.svg) no-repeat center center;
+}
+
+/* MAIN */
+
+/* hero section */
+.hero_container {
+    position: relative;
+    min-height: 40.25rem;
+    border-radius: 2.5em;
+    overflow: hidden;
+    margin-top: 1.25em;
+}
+
+.hero_video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero_content {
+    max-width: 33.125em;
+    position: relative;
+    z-index: 1;
+    color: var(--color-main-light);
+    margin:  6.25em auto auto 6.25em;
+}
+/* favorite section */
+/* about section */
+/* mobile_app section */
+/* FOOTER */
