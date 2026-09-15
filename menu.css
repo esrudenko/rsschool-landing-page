@@ -53,18 +53,16 @@ body {
 
 .header_icons_container,
 .header_link,
-.hero_btn,
-.arrow,
-.app_btn,
 .social_icons,
-.contacts_link {
+.contacts_link,
+.tab_item {
   transition: 0.3s all ease;
 }
 
 a,
-.arrows,
 .header_icons_container,
-.social_icons {
+.social_icons,
+.tab_item {
   cursor: pointer;
 }
 
@@ -74,133 +72,33 @@ p {
   line-height: 150%;
 }
 
-.hero_title {
-  font-size: 4.5rem;
-  font-weight: 600;
-  line-height: 105%;
-}
-
-.hero_text,
-.hero_btn {
-  margin: 2.5em 0 2.5em 0;
-}
-
-.section_title,
+.menu_title,
 .contacts_title {
   font-size: 3.75rem;
   font-weight: 600;
   line-height: 125%;
 }
 
-.favorite_content_title,
-.favorite_price,
-.contacts_info_title {
+.contacts_info_title,
+.card_description_title,
+.card_description_price {
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 125%;
 }
 
-.favorite_content_text {
-  text-align: center;
-}
-
-.available {
-  font-size: 0.625rem;
-  font-weight: 600;
-  line-height: 140%;
-}
-
-.app_store {
-  font-weight: 600;
-}
-
 /* BUTTONS */
-.hero_btn {
-  color: var(--color-main-dark);
-  background: var(--color-main-light);
-  padding: 1.25em 4.876em 1.25em 4.876em;
-  border-radius: 6.25em;
-}
-
-.hero_btn:hover {
-  background: var(--color-main-light) url(./img/icons/coffee-cup.png) no-repeat
-    right 3em center;
-}
-
-.arrows,
 .social_icons {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-}
-
-.arrows {
-  border: 1px solid var(--color-border-dark);
-}
-
-.arrow,
-.social_icons {
   background-size: 24px 24px;
   border-radius: 50%;
   padding: 1.5em;
 }
 
-.arrow {
-  background: url(./img/icons/arrow-dark.png) no-repeat center center;
-}
-
-.icon_arrow_left {
-  transform: rotate(180deg);
-}
-
-.arrow:hover {
-  background: var(--color-border-dark) url(./img//icons/arrow-light.png)
-    no-repeat center center;
-}
-
 /* LINKS */
-.app_btns_container {
-  display: flex;
-  gap: 1.25em;
-}
-
-.app_btn {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: var(--color-main-dark);
-  width: 200px;
-  gap: 0.5em;
-  border: 1px solid var(--color-border-dark);
-  border-radius: 6.25em;
-  font-size: 5px;
-  padding: 0.75em 0;
-}
-
-.app_btn:hover {
-  color: var(--color-main-light);
-}
-
-.apple_btn {
-  background: url(./img/icons/apple-dark.png) no-repeat 15px center;
-}
-
-.apple_btn:hover {
-  background: var(--color-border-dark) url(./img/icons/apple-light.png)
-    no-repeat 15px center;
-}
-
-.google_btn {
-  background: url(./img/icons/google-dark.png) no-repeat 15px center;
-}
-
-.google_btn:hover {
-  background: var(--color-border-dark) url(./img/icons/google-light.png)
-    no-repeat 15px center;
-}
-
 .social_icons {
   border: 1px solid var(--color-border-primary);
 }
@@ -255,7 +153,8 @@ p {
 
 .header_link,
 .contacts_link,
-.clock_li {
+.clock_li,
+.tab_title {
   font-size: 1rem;
   font-weight: 600;
   line-height: 150%;
@@ -318,140 +217,86 @@ p {
 }
 
 /* MAIN */
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 6.25em;
-}
-
-/* hero section */
-.hero_container {
-  position: relative;
-  min-height: 40.25rem;
-  border-radius: 2.5em;
-  overflow: hidden;
-  margin-top: 1.25em;
-}
-
-.hero_video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
-.hero_content {
-  max-width: 33.125em;
-  position: relative;
-  z-index: 1;
-  color: var(--color-main-light);
-  margin: 6.25em auto auto 6.25em;
-}
-
-/* favorite section */
-.favorite_container {
+.menu_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 1.25em 0 0 0;
   gap: 2.5em;
 }
 
-.favorite_slider {
-  width: 100%;
+.menu_title {
+  max-width: 800px;
+  text-align: center;
+}
+
+.tabs_container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 1.125em;
 }
 
-.favorite_content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1em;
-  max-width: 490px;
-}
-
-.favorite_img {
-  max-width: 480px;
-  max-height: 480px;
-  padding-bottom: 0.25em;
-}
-
-.controls_container {
+.tab_item {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.75em;
+  gap: 0.5em;
+  padding: 0.69em 1em 0.69em 0.5em;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 6.25em;
+  background: var(--color-main-light);
 }
 
-.control {
-  width: 40px;
-  height: 4px;
-  border-radius: 6.25em;
+.icon_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.44em;
+  border-radius: 50%;
   background: var(--color-border-primary);
 }
 
-.control_active {
+.active,
+.tab_item:hover {
   background: var(--color-border-dark);
+  color: var(--color-main-light);
 }
 
-/* about section */
-.about_gallery {
-  display: grid;
-  margin: 2.5em 0 0 0;
-  gap: 2.5em;
-  grid-template: 430px 120px 430px /1fr 1fr;
-}
-
-.img_1 {
-  grid-column: 1;
-  grid-row: 1 / 3;
-}
-
-.img_2 {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.img_3 {
-  grid-column: 1;
-  grid-row: 3;
-}
-
-.img_4 {
-  grid-column: 2;
-  grid-row: 2 / 4;
-}
-
-.gallery_img {
+.menu_grid {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 1.25em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 2.5em;
 }
 
-/* mobile_app section */
-.mobile_app_container {
+.menu_card {
+  max-width: 310px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 2.5em;
+  overflow: hidden;
+}
+
+.menu_img_container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2.5em;
+  max-height: 310px;
+  overflow: hidden;
 }
 
-.app_content {
+.img_card {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.description {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 2.5em;
-  max-width: 630px;
+  padding: 1.25em;
+  gap: 0.75em;
 }
-
-.mobile_app_img {
-  width: 630px;
-  height: 630px;
-}
-
 /* FOOTER */
 .footer_container {
   display: flex;
