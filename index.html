@@ -53,7 +53,7 @@
       <main>
         <section id="hero" class="hero_container">
           <video class="hero_video" autoplay muted loop playsinline>
-            <source src="./video/hero-video.mp4" />
+            <source src="./video/hero-video.mp4" type="video/mp4" />
           </video>
           <div class="hero_content">
             <h1 class="hero_title">
@@ -74,7 +74,7 @@
             Choose your <span class="hightlight_text">favorite</span> coffee
           </h2>
           <div class="favorite_slider">
-            <div class="arrows icon_arrow_left">
+            <div class="arrows icon_arrow_left" role="button">
               <img
                 class="arrow arrow-left"
                 src="./img/icons/arrow-dark.png"
@@ -94,7 +94,7 @@
               </p>
               <p class="favorite_price">$5.50</p>
             </div>
-            <div class="arrows icon_arrow_right">
+            <div class="arrows icon_arrow_right" role="button">
               <img
                 class="arrow arrow-right"
                 src="./img/icons/arrow-dark.png"
@@ -137,6 +137,39 @@
               alt=""
             />
           </div>
+        </section>
+        <section id="mobile_app" class="mobile_app_container">
+          <div class="app_content">
+            <h2 class="app_title">
+              <span class="hightlight_text">Download</span> our app<br />to
+              start ordering
+            </h2>
+            <p class="app_text">
+              Download the Resource app today and experience the comfort of
+              ordering your favorite coffee from wherever you are
+            </p>
+            <div class="app_btns_container">
+              <a
+                class="app_btn apple_btn"
+                href="https://www.apple.com/app-store/"
+              >
+                <p class="available">Available on the</p>
+                <p class="app_store">App Store</p>
+              </a>
+              <a
+                class="app_btn google_btn"
+                href="https://play.google.com/store/games"
+              >
+                <p class="available">Available on</p>
+                <p class="app_store">Google Play</p>
+              </a>
+            </div>
+          </div>
+          <img
+            class="mobile_app_img"
+            src="./img/home-page/mobile-screens.png"
+            alt="Coffee shop mobile app displayed on two smartphones"
+          />
         </section>
       </main>
     </div>
