@@ -22,47 +22,70 @@ a {
   text-decoration: none;
 }
 
+img {
+  display: block;
+}
+
+:root.dark_theme {
+  --color-text-primary: #e1d4c9;
+  --color-text-inverse: #e1d4c9;
+  --color-text-accent: #b0907a;
+  --color-bg-page: #292826;
+  --color-bg-container: #403f3d;
+  --color-bg-overlay: #292826 80%;
+  --color-border-primary: #665f55;
+  --color-border-inverse: #c1b6ad;
+  --color-icon: #e1d4c9;
+  --color-icon-reverse: #403f3d;
+  --color-icon-bg: transparent;
+}
+
 :root {
-  --color-main-light: #e1d4c9;
-  --color-main-dark: #403f3d;
-  --color-highlight: #b0907a;
+  --color-text-primary: #403f3d;
+  --color-text-inverse: #e1d4c9;
+  --color-text-accent: #b0907a;
+  --color-bg-page: #e1d4c9;
+  --color-bg-container: #665f55;
+  --color-bg-overlay: #403f3d 80%;
   --color-border-primary: #c1b6ad;
-  --color-border-dark: #665f55;
+  --color-border-inverse: #665f55;
+  --color-icon: #403f3d;
+  --color-icon-reverse: #e1d4c9;
+  --color-icon-bg: transparent;
 }
 
 body {
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  letter-spacing: 0%;
-  color: var(--color-main-dark);
-  background: var(--color-main-light);
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
 }
 
 .container {
-  display: block;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
   padding: 1.25rem 2.5rem 2.5rem 2.5rem;
 }
 
-.hightlight_text {
-  color: var(--color-highlight);
+.text_accent {
+  color: var(--color-text-accent);
   font-style: italic;
 }
 
-.header_icons_container,
+.theme_btn,
 .header_link,
-.social_icons,
+.social_icon_container,
 .contacts_link,
 .tab_item {
   transition: 0.3s all ease;
 }
 
 a,
-.header_icons_container,
-.social_icons,
-.tab_item {
+.theme_btn,
+.social_icon_container,
+.tab_item,
+.menu_card {
   cursor: pointer;
 }
 
@@ -88,50 +111,28 @@ p {
 }
 
 /* BUTTONS */
-.social_icons {
+.social_icon_container {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-size: 24px 24px;
-  border-radius: 50%;
-  padding: 1.5em;
-}
-
-/* LINKS */
-.social_icons {
+  padding: 1.125em;
+  color: var(--color-icon-reverse);
   border: 1px solid var(--color-border-primary);
 }
 
-.social_icons:hover {
+/* LINKS */
+.social_icon_container:hover {
+  color: var(--color-icon);
   background: var(--color-border-primary);
 }
 
-.twitter_icon {
-  background: url(./img/icons/twitter-light.svg) no-repeat center center;
+:root.dark_theme .social_icon_container {
+  color: var(--color-icon);
 }
 
-.twitter_icon:hover {
-  background: var(--color-border-primary) url(./img/icons/twitter-dark.svg)
-    no-repeat center center;
-}
-
-.instagram_icon {
-  background: url(./img/icons/instagram-light.svg) no-repeat center center;
-}
-
-.instagram_icon:hover {
-  background: var(--color-border-primary) url(./img/icons/instagram-dark.svg)
-    no-repeat center center;
-}
-
-.facebook_icon {
-  background: url(./img/icons/facebook-light.svg) no-repeat center center;
-}
-
-.facebook_icon:hover {
-  background: var(--color-border-primary) url(./img/icons/facebook-dark.svg)
-    no-repeat center center;
+:root.dark_theme .social_icon_container:hover {
+  background: var(--color-bg-page);
 }
 
 /* HEADER */
@@ -144,6 +145,7 @@ p {
 .logo_img {
   width: 6.25rem;
   height: 3.75rem;
+  color: var(--color-icon);
 }
 
 .header_list {
@@ -161,19 +163,20 @@ p {
 }
 
 .header_link {
-  color: var(--color-main-dark);
+  color: var(--color-text-primary);
 }
 
 .contacts_link {
-  color: var(--color-main-light);
+  color: var(--color-text-inverse);
+  border-bottom: 0.125em solid var(--color-border-inverse);
 }
 
 .header_link:hover {
-  border-bottom: 0.125em solid var(--color-main-dark);
+  border-bottom: 0.125em solid var(--color-text-primary);
 }
 
 .contacts_link:hover {
-  border-bottom: 0.125em solid var(--color-main-light);
+  border-bottom: 0.125em solid var(--color-text-inverse);
 }
 
 .header_options {
@@ -190,7 +193,7 @@ p {
   border-radius: 6.25em;
 }
 
-.header_icons_container {
+.theme_btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -198,22 +201,27 @@ p {
   height: 36px;
   border-radius: 50%;
   border: none;
+  color: var(--color-icon);
+  background: transparent;
 }
 
-.sun_icon {
-  background: var(--color-highlight) url(./img/icons/Sun.svg) no-repeat center
-    center;
-  background-size: 22px 22px;
+.theme_btn:disabled {
+  cursor: default;
+  color: var(--color-icon-reverse);
+  background: var(--color-text-accent);
 }
 
-.moon_icon {
-  background: url(./img/icons/Moon-dark.svg) no-repeat center center;
-  background-size: 22px 22px;
+.theme_btn:not(:disabled):hover {
+  color: var(--color-icon-reverse);
+  background: var(--color-bg-container);
 }
 
-.moon_icon:hover {
-  background: var(--color-border-dark) url(./img/icons/Moon-light.svg) no-repeat
-    center center;
+:root.dark_theme .theme_btn:not(:disabled):hover {
+  color: var(--color-icon);
+}
+
+.coffee_cup_icon {
+  color: var(--color-icon);
 }
 
 /* MAIN */
@@ -244,7 +252,12 @@ p {
   padding: 0.69em 1em 0.69em 0.5em;
   border: 1px solid var(--color-border-primary);
   border-radius: 6.25em;
-  background: var(--color-main-light);
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
+}
+
+.tab_item:disabled {
+  cursor: default;
 }
 
 .icon_container {
@@ -258,8 +271,13 @@ p {
 
 .active,
 .tab_item:hover {
-  background: var(--color-border-dark);
-  color: var(--color-main-light);
+  background: var(--color-bg-container);
+  color: var(--color-text-inverse);
+}
+
+.active .icon_container,
+.tab_item:hover .icon_container {
+  background: var(--color-bg-page);
 }
 
 .menu_grid {
@@ -302,8 +320,8 @@ p {
   display: flex;
   align-items: center;
   gap: 6.25em;
-  color: var(--color-main-light);
-  background: var(--color-border-dark);
+  color: var(--color-text-inverse);
+  background: var(--color-bg-container);
   padding: 6.25em;
   margin-top: 6.25em;
   border-radius: 2.5em;
@@ -321,8 +339,11 @@ p {
   gap: 0.75em;
 }
 
-.contact_icons {
-  margin-right: 0.5em;
+.contacts_link,
+.clock_li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .contacts_info {
@@ -334,3 +355,5 @@ p {
 .contacts_info_title {
   margin: 0 0 1.5em 0;
 }
+
+/* ADDITIONAL STYLES */
