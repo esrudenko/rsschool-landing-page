@@ -283,6 +283,14 @@ p {
   border-bottom: 0.125em solid var(--color-text-inverse);
 }
 
+:root.dark_theme .contacts_link {
+  border-bottom-color: var(--color-bg-container);
+}
+
+:root.dark_theme .contacts_link:hover {
+  border-bottom-color: var(--color-text-inverse);
+}
+
 .header_options {
   display: flex;
   align-items: center;
