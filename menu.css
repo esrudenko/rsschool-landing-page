@@ -83,6 +83,7 @@ body {
 
 a,
 .theme_btn,
+.burger_btn,
 .social_icon_container,
 .tab_item,
 .menu_card {
@@ -111,6 +112,19 @@ p {
 }
 
 /* BUTTONS */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btns {
+  display: none;
+  border: none;
+  color: var(--color-icon);
+  background: transparent;
+  border-radius: 50%;
+}
+
 .social_icon_container {
   display: flex;
   justify-content: center;
@@ -122,17 +136,16 @@ p {
 }
 
 /* LINKS */
-.social_icon_container:hover {
-  color: var(--color-icon);
-  background: var(--color-border-primary);
+.menu_link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: 1px solid var(--color-bg-page);
 }
 
 :root.dark_theme .social_icon_container {
   color: var(--color-icon);
-}
-
-:root.dark_theme .social_icon_container:hover {
-  background: var(--color-bg-page);
 }
 
 /* HEADER */
@@ -171,20 +184,8 @@ p {
   border-bottom: 0.125em solid var(--color-border-inverse);
 }
 
-.header_link:hover {
-  border-bottom: 0.125em solid var(--color-text-primary);
-}
-
-.contacts_link:hover {
-  border-bottom: 0.125em solid var(--color-text-inverse);
-}
-
 :root.dark_theme .contacts_link {
   border-bottom-color: var(--color-bg-container);
-}
-
-:root.dark_theme .contacts_link:hover {
-  border-bottom-color: var(--color-text-inverse);
 }
 
 .header_options {
@@ -219,17 +220,9 @@ p {
   background: var(--color-text-accent);
 }
 
-.theme_btn:not(:disabled):hover {
-  color: var(--color-icon-reverse);
-  background: var(--color-bg-container);
-}
-
-:root.dark_theme .theme_btn:not(:disabled):hover {
-  color: var(--color-icon);
-}
-
 .coffee_cup_icon {
   color: var(--color-icon);
+  padding-bottom: 3px;
 }
 
 /* MAIN */
@@ -291,11 +284,13 @@ p {
 .menu_grid {
   width: 100%;
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
   gap: 2.5em;
 }
 
 .menu_card {
+  width: 100%;
   max-width: 310px;
   border: 1px solid var(--color-border-primary);
   border-radius: 2.5em;
@@ -323,6 +318,7 @@ p {
   padding: 1.25em;
   gap: 0.75em;
 }
+
 /* FOOTER */
 .footer_container {
   display: flex;
@@ -364,4 +360,112 @@ p {
   margin: 0 0 1.5em 0;
 }
 
-/* ADDITIONAL STYLES */
+/* HOVER and ACTIVE effects */
+@media (hover: hover) {
+  .header_link:hover {
+    border-bottom: 0.125em solid var(--color-text-primary);
+  }
+
+  .theme_btn:not(:disabled):hover {
+    color: var(--color-icon-reverse);
+    background: var(--color-bg-container);
+  }
+
+  :root.dark_theme .theme_btn:not(:disabled):hover {
+    color: var(--color-icon);
+  }
+
+  .contacts_link:hover {
+    border-bottom: 0.125em solid var(--color-text-inverse);
+  }
+
+  :root.dark_theme .contacts_link:hover {
+    border-bottom-color: var(--color-text-inverse);
+  }
+
+  .social_icon_container:hover {
+    color: var(--color-icon);
+    background: var(--color-border-primary);
+  }
+
+  :root.dark_theme .social_icon_container:hover {
+    background: var(--color-bg-page);
+  }
+}
+
+@media (hover: none) {
+  .header_link:active {
+    border-bottom: 0.125em solid var(--color-text-primary);
+  }
+
+  .contacts_link:active {
+    border-bottom: 0.125em solid var(--color-text-inverse);
+  }
+
+  :root.dark_theme .contacts_link:active {
+    border-bottom-color: var(--color-text-inverse);
+  }
+
+  .btns:active {
+    color: var(--color-icon-reverse);
+    background: var(--color-bg-container);
+  }
+}
+
+/* ADAPTIVE */
+@media (max-width: 1200px) {
+  .footer_container {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .contacts_title {
+    font-size: 3.7rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .header_link {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header_list,
+  .menu_link,
+  .menu_card:nth-child(n + 5) {
+    display: none;
+  }
+
+  #burger_default,
+  #upload_btn {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .menu_title,
+  .contacts_title {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu_title,
+  .contacts_title {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 1.25em 1em 2.5em 1em;
+  }
+
+  .header_options {
+    gap: 0.75em;
+  }
+
+  .footer_container {
+    padding: 3.75em 1em;
+    gap: 2.5em;
+  }
+}
