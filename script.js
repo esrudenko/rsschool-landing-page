@@ -89,7 +89,7 @@ if (tabsContainer) {
 
     menuGrid.innerHTML = menuDataArr.join("");
 
-    if (filteredData.length > 4) {
+    if (filteredData.length > 4 && (window.innerWidth <= 768)) {
       uploadBtn.style.display = "block";
     } else {
       uploadBtn.style.display = "none";
