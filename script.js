@@ -8,6 +8,7 @@ const moonBtn = document.querySelector("#moon_btn");
 const menuGrid = document.querySelector(".menu_grid");
 const tabsContainer = document.querySelector(".tabs_container");
 const tabItem = document.querySelectorAll(".tab_item");
+const uploadBtn = document.querySelector("#upload_btn");
 
 let selectedCategory = "Coffee";
 
@@ -26,8 +27,10 @@ if (savedTheme === "dark") {
 
 // Toggle theme
 themeSwitch.addEventListener("click", function (e) {
+
   const themeBtn = e.target.closest(".theme_btn");
   if (!themeBtn) return;
+  
   if (document.documentElement.classList.toggle("dark_theme")) {
     sunBtn.disabled = false;
     moonBtn.disabled = true;
@@ -42,6 +45,7 @@ themeSwitch.addEventListener("click", function (e) {
 // Menu-page: Toggle Tabs
 if (tabsContainer) {
   tabsContainer.addEventListener("click", function (e) {
+
     const button = e.target.closest(".tab_item");
     if (!button) return;
 
@@ -54,15 +58,20 @@ if (tabsContainer) {
     renderMenu(selectedCategory);
     button.classList.add("active");
     button.disabled = true;
+    menuGrid.classList.add("collapsed");
   });
 
-  //render Menu-page
+  //Render Menu-page
   function renderMenu(selectedCategory) {
-    menuGrid.innerHTML = menuData
-      .map((item, index) => {
-        const { category, image, name, description, price } = item;
-        if (category === selectedCategory) {
-          return `
+
+    const filteredData = menuData.filter(
+      (item) => item.category === selectedCategory,
+    );
+
+    const menuDataArr = menuData.map((item, index) => {
+      const { category, image, name, description, price } = item;
+      if (category === selectedCategory) {
+        return `
             <div class="menu_card ${category}_${index + 1}">
               <div class="menu_img_container">
                 <img class="img_card" src="${image}"
@@ -71,14 +80,27 @@ if (tabsContainer) {
               <div class="description">
                 <h3 class="card_description_title">${name}</h3>
                 <p class="card_description_text">${description}</p>
-                <p class="card_description_price">$${price}</p>
+                <p class="card_description_price">$${price.toFixed(2)}</p>
               </div>
             </div>
         `;
-        }
-      })
-      .join("");
+      }
+    });
+
+    menuGrid.innerHTML = menuDataArr.join("");
+
+    if (filteredData.length > 4) {
+      uploadBtn.style.display = "block";
+    } else {
+      uploadBtn.style.display = "none";
+    }
   }
 
   renderMenu(selectedCategory);
 }
+
+//Expended more cards
+uploadBtn.addEventListener("click", () => {
+  menuGrid.classList.remove("collapsed");
+  uploadBtn.style.display = "none";
+});
