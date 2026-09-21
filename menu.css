@@ -75,10 +75,11 @@ body {
 
 .theme_btn,
 .header_link,
+.menu_card,
 .social_icon_container,
 .contacts_link,
 .tab_item {
-  transition: 0.3s all ease;
+  transition: 0.4s all ease;
 }
 
 a,
@@ -386,6 +387,11 @@ a {
 
   :root.dark_theme .theme_btn:not(:disabled):hover {
     color: var(--color-icon);
+  }
+
+  .menu_card:hover {
+    color: var(--color-text-inverse);
+    background-color: var(--color-bg-container);
   }
 
   .contacts_link:hover {
