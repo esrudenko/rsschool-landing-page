@@ -366,12 +366,23 @@ main {
   align-items: center;
 }
 
+.slider_window {
+  width: 490px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.slider_track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
 .favorite_content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1em;
-  max-width: 490px;
+  flex: 0 0 490px;
 }
 
 .favorite_img {
@@ -766,6 +777,14 @@ main {
     font-size: 4rem;
   }
 
+  .slider_window {
+    width: 348px;
+  }
+
+  .favorite_content {
+    flex: 0 0 348px;
+  }
+
   .mobile_app_container {
     flex-direction: column;
     gap: 2.5em;
@@ -777,7 +796,7 @@ main {
     height: 348px;
   }
 
-  .favorite_content {
+  .slider_track {
     margin: 0 auto;
   }
 

@@ -397,7 +397,7 @@
           </h2>
           <div class="favorite_slider">
             <button
-              class="arrows icon_arrow_left"
+              class="arrows icon_arrow_left prev_btn"
               type="button"
               aria-label="Previous slide"
             >
@@ -418,31 +418,51 @@
                 />
               </svg>
             </button>
-            <div class="favorite_content">
-              <img
-                class="favorite_img"
-                src="./img/home-page/coffee-slider-1.png"
-                alt="S’mores Frappuccino with cream in a tall glass"
-              />
-              <img
-                class="favorite_img hidden"
-                src="./img/home-page/coffee-slider-2.png"
-                alt="Caramel Macchiato in a glass cup"
-              />
-              <img
-                class="favorite_img hidden"
-                src="./img/home-page/coffee-slider-3.png"
-                alt="Ice black coffee in a tall glass"
-              />
-              <h3 class="favorite_content_title">S’mores Frappuccino</h3>
-              <p class="favorite_content_text">
-                This new drink takes an espresso and mixes it with brown sugar
-                and cinnamon before being topped with oat milk.
-              </p>
-              <p class="favorite_price">$5.50</p>
+            <div class="slider_window">
+              <div class="slider_track">
+                <div class="favorite_content">
+                  <img
+                    class="favorite_img"
+                    src="./img/home-page/coffee-slider-1.png"
+                    alt="S’mores Frappuccino with cream in a tall glass"
+                  />
+                  <h3 class="favorite_content_title">S’mores Frappuccino</h3>
+                  <p class="favorite_content_text">
+                    This new drink takes an espresso and mixes it with brown
+                    sugar and cinnamon before being topped with oat milk.
+                  </p>
+                  <p class="favorite_price">$5.50</p>
+                </div>
+                <div class="favorite_content">
+                  <img
+                    class="favorite_img"
+                    src="./img/home-page/coffee-slider-2.png"
+                    alt="Caramel Macchiato in a cup of coffee"
+                  />
+                  <h3 class="favorite_content_title">Caramel Macchiato</h3>
+                  <p class="favorite_content_text">
+                    Fragrant and unique classic espresso with rich
+                    caramel-peanut syrup, with cream under whipped thick foam.
+                  </p>
+                  <p class="favorite_price">$5.00</p>
+                </div>
+                <div class="favorite_content">
+                  <img
+                    class="favorite_img"
+                    src="./img/home-page/coffee-slider-3.png"
+                    alt="Black ice coffee in a tall glass"
+                  />
+                  <h3 class="favorite_content_title">Ice coffee</h3>
+                  <p class="favorite_content_text">
+                    A popular summer drink that tones and invigorates. Prepared
+                    from coffee, milk and ice.
+                  </p>
+                  <p class="favorite_price">$4.50</p>
+                </div>
+              </div>
             </div>
             <button
-              class="arrows icon_arrow_right"
+              class="arrows icon_arrow_right next_btn"
               type="button"
               aria-label="Next slide"
             >
@@ -475,13 +495,13 @@
               class="control"
               id="control_2"
               type="button"
-              aria-label="First control"
+              aria-label="Second control"
             ></button>
             <button
               class="control"
               id="control_3"
               type="button"
-              aria-label="First control"
+              aria-label="Third control"
             ></button>
           </div>
         </section>

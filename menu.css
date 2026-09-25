@@ -279,7 +279,7 @@ a {
   color: var(--color-text-inverse);
 }
 
-.active .icon_container,
+.active_tab .icon_container,
 .tab_item:hover .icon_container {
   background: var(--color-bg-page);
 }

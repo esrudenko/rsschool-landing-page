@@ -1,18 +1,12 @@
 import { menuData } from "./data.js";
 
-const themeSwitch = document.querySelector(".theme_switch");
-const themeBtn = document.querySelectorAll(".theme_btn");
-const sunBtn = document.querySelector("#sun_btn");
-const moonBtn = document.querySelector("#moon_btn");
-
-const menuGrid = document.querySelector(".menu_grid");
-const tabsContainer = document.querySelector(".tabs_container");
-const tabItem = document.querySelectorAll(".tab_item");
-const uploadBtn = document.querySelector("#upload_btn");
-
 let selectedCategory = "Coffee";
 
 //Check saved theme
+const themeSwitch = document.querySelector(".theme_switch");
+const sunBtn = document.querySelector("#sun_btn");
+const moonBtn = document.querySelector("#moon_btn");
+
 const savedTheme = localStorage.getItem("theme");
 
 if (savedTheme === "dark") {
@@ -42,9 +36,16 @@ themeSwitch.addEventListener("click", function (e) {
 });
 
 // Menu-page: Toggle Tabs
+
+const menuGrid = document.querySelector(".menu_grid");
+const tabsContainer = document.querySelector(".tabs_container");
+const tabItem = document.querySelectorAll(".tab_item");
+const uploadBtn = document.querySelector("#upload_btn");
+
 if (tabsContainer) {
   tabsContainer.addEventListener("click", function (e) {
     const button = e.target.closest(".tab_item");
+
     if (!button) return;
 
     tabItem.forEach((item) => {
@@ -53,22 +54,30 @@ if (tabsContainer) {
     });
 
     selectedCategory = button.dataset.category;
+
+    if (window.innerWidth <= 768) {
+      menuGrid.classList.add("collapsed");
+    }
+
     renderMenu(selectedCategory);
+
     button.classList.add("active_tab");
     button.disabled = true;
-    menuGrid.classList.add("collapsed");
   });
 
-  //Render Menu-page
-  function renderMenu(selectedCategory) {
-    const filteredData = menuData.filter(
-      (item) => item.category === selectedCategory,
-    );
+  renderMenu(selectedCategory);
+}
 
-    const menuDataArr = menuData.map((item, index) => {
-      const { category, image, name, description, price } = item;
-      if (category === selectedCategory) {
-        return `
+//Render Menu-page
+function renderMenu(selectedCategory) {
+  const filteredData = menuData.filter(
+    (item) => item.category === selectedCategory,
+  );
+
+  const menuDataArr = filteredData.map((item, index) => {
+    const { category, image, name, description, price } = item;
+
+    return `
             <div class="menu_card ${category}_${index + 1}">
               <div class="menu_img_container">
                 <img class="img_card" src="${image}"
@@ -81,19 +90,19 @@ if (tabsContainer) {
               </div>
             </div>
         `;
-      }
-    });
+  });
 
-    menuGrid.innerHTML = menuDataArr.join("");
+  menuGrid.innerHTML = menuDataArr.join("");
 
-    if (filteredData.length > 4 && window.innerWidth <= 768) {
-      uploadBtn.style.display = "block";
-    } else {
-      uploadBtn.style.display = "none";
-    }
+  if (
+    filteredData.length > 4 &&
+    window.innerWidth <= 768 &&
+    menuGrid.classList.contains("collapsed")
+  ) {
+    uploadBtn.style.display = "block";
+  } else {
+    uploadBtn.style.display = "none";
   }
-
-  renderMenu(selectedCategory);
 }
 
 //Expended more cards
@@ -126,8 +135,30 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+//Resize page
+let smallScreen = window.innerWidth <= 768;
+
 window.addEventListener("resize", () => {
-  if (window.innerWidth >= 769 && headerList.classList.contains("active_menu")) {
+  const nowSmallScreen = window.innerWidth <= 768;
+
+  if (menuGrid) {
+    if (nowSmallScreen !== smallScreen) {
+      if (nowSmallScreen) {
+        menuGrid.classList.add("collapsed");
+      } else {
+        menuGrid.classList.remove("collapsed");
+      }
+
+      renderMenu(selectedCategory);
+
+      smallScreen = nowSmallScreen;
+    }
+  }
+
+  if (
+    window.innerWidth >= 769 &&
+    headerList.classList.contains("active_menu")
+  ) {
     closeBurgerMenu();
   }
 });
@@ -144,4 +175,59 @@ function closeBurgerMenu() {
   headerList.classList.remove("active_menu");
   document.body.classList.remove("menu_open");
   menuLinkBurger.classList.add("hidden");
+}
+
+//Slider (carousel)
+const sliderTrack = document.querySelector(".slider_track");
+const nextBtn = document.querySelector(".next_btn");
+const prevBtn = document.querySelector(".prev_btn");
+const slides = document.querySelectorAll(".favorite_content");
+const controls = document.querySelectorAll(".control");
+
+let currentSlide = 0;
+
+if (sliderTrack) {
+  nextBtn.addEventListener("click", () => {
+    currentSlide++;
+
+    if (currentSlide >= slides.length) {
+      currentSlide = 0;
+    }
+
+    showSlide();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    currentSlide--;
+
+    if (currentSlide < 0) {
+      currentSlide = slides.length - 1;
+    }
+
+    showSlide();
+  });
+
+  controls.forEach((control, index) => {
+    control.addEventListener("click", () => {
+      currentSlide = index;
+
+      updateControls();
+      showSlide();
+    });
+  });
+}
+
+function showSlide() {
+  sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+  updateControls();
+}
+
+function updateControls() {
+  controls.forEach((control, index) => {
+    if (index === currentSlide) {
+      control.classList.add("control_active");
+    } else {
+      control.classList.remove("control_active");
+    }
+  });
 }
