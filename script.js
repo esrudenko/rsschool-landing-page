@@ -75,10 +75,10 @@ function renderMenu(selectedCategory) {
   );
 
   const menuDataArr = filteredData.map((item, index) => {
-    const { category, image, name, description, price } = item;
+    const { category, image, name, description, price, id } = item;
 
     return `
-            <div class="menu_card ${category}_${index + 1}">
+            <div class="menu_card ${category}_${index + 1}" data-id="${id}">
               <div class="menu_img_container">
                 <img class="img_card" src="${image}"
               alt="">
@@ -132,6 +132,9 @@ headerLinks.forEach((link) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && headerList.classList.contains("active_menu")) {
     closeBurgerMenu();
+  }
+  if (event.key === "Escape" && document.body.classList.contains("modal_open")) {
+    closeModal();
   }
 });
 
@@ -230,4 +233,108 @@ function updateControls() {
       control.classList.remove("control_active");
     }
   });
+}
+
+//Modals
+const modalContainer = document.querySelector(".modal_container");
+const modalOverlay = document.querySelector(".modal_overlay");
+
+if (menuGrid) {
+  menuGrid.addEventListener("click", openModal);
+}
+
+modalContainer.addEventListener("click", (e) => {
+  if(e.target.closest('.close_modal_btn')) {
+    closeModal();
+  }
+})
+
+modalOverlay.addEventListener("click", (e) => {
+  if(!e.target.closest('.modal_container')) {
+    closeModal();
+  }
+})
+
+function openModal(e) {
+    const card = e.target.closest(".menu_card");
+
+    if (!card) return;
+
+    const id = Number(card.dataset.id);
+    const product = menuData.find((item) => item.id === id);
+
+    modalOverlay.style.display = "flex";
+    modalContainer.innerHTML = `
+        <div class="modal_img_container">
+              <img class="modal_img" src="${product.image}">
+            </div>
+            <div class="modal_content">
+              <div class="modal_description">
+                <h3 class="modal_title">${product.name}</h3>
+                <p class="modal_text">${product.description}</p>
+              </div>
+              <div class="option_group">
+                <p class="option_title">Size</p>
+                <div class="option_list">
+                  <button class="tab_item active_tab">
+                    <span class="option_badge">S</span>
+                    <span class="option_text">${product.size[0]}</span>
+                  </button>
+                  <button class="tab_item">
+                    <span class="option_badge">M</span>
+                    <span class="option_text">${product.size[1]}</span>
+                  </button>
+                  <button class="tab_item">
+                    <span class="option_badge">L</span>
+                    <span class="option_text">${product.size[2]}</span>
+                  </button>
+                </div>
+              </div>
+              <div class="option_group">
+                <p class="option_title">Additives</p>
+                <div class="option_list">
+                  <button class="tab_item">
+                    <span class="option_badge">1</span>
+                    <span class="option_text">${product.additives[0]}</span>
+                  </button>
+                  <button class="tab_item">
+                    <span class="option_badge">2</span>
+                    <span class="option_text">${product.additives[1]}</span>
+                    </button>
+                  <button class="tab_item">
+                    <span class="option_badge">3</span>
+                    <span class="option_text">${product.additives[2]}</span>
+                  </button>
+                </div>
+              </div>
+              <div class="total_row">
+                <p class="total_label">Total:</p>
+                <p class="total_price">$${product.price.toFixed(2)}</p>
+              </div>
+              <div class="modal_note">
+                <svg class="modal_note_icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_147811_7672)">
+                  <path d="M8 7.66663V11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8 5.00667L8.00667 4.99926" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8.00016 14.6667C11.6821 14.6667 14.6668 11.6819 14.6668 8.00004C14.6668 4.31814 11.6821 1.33337 8.00016 1.33337C4.31826 1.33337 1.3335 4.31814 1.3335 8.00004C1.3335 11.6819 4.31826 14.6667 8.00016 14.6667Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                  <defs>
+                  <clipPath id="clip0_147811_7672">
+                  <rect width="16" height="16" fill="white"/>
+                  </clipPath>
+                  </defs>
+                </svg>
+                <p class="modal_note_text">
+                  The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.
+                </p>
+              </div>
+              <button class="close_modal_btn">Close</button>
+            </div> 
+        `;
+        document.body.classList.add("modal_open");
+}
+
+function closeModal() {
+    modalOverlay.style.display = "none";
+    document.body.classList.remove("modal_open");
 }
