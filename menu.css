@@ -32,7 +32,7 @@ img {
   --color-text-accent: #b0907a;
   --color-bg-page: #292826;
   --color-bg-container: #403f3d;
-  --color-bg-overlay: #292826 80%;
+  --color-bg-overlay: rgb(64 63 61 / 80%);
   --color-border-primary: #665f55;
   --color-border-inverse: #c1b6ad;
   --color-icon: #e1d4c9;
@@ -46,7 +46,7 @@ img {
   --color-text-accent: #b0907a;
   --color-bg-page: #e1d4c9;
   --color-bg-container: #665f55;
-  --color-bg-overlay: #403f3d 80%;
+  --color-bg-overlay: rgb(64 63 61 / 80%);
   --color-border-primary: #c1b6ad;
   --color-border-inverse: #665f55;
   --color-icon: #403f3d;
@@ -78,7 +78,8 @@ body {
 .menu_card,
 .social_icon_container,
 .contacts_link,
-.tab_item {
+.tab_item,
+.close_modal_btn {
   transition: 0.4s all ease;
 }
 
@@ -87,7 +88,9 @@ a,
 .burger_btn,
 .social_icon_container,
 .tab_item,
-.menu_card {
+.menu_card,
+.close_modal_btn,
+.modal_overlay {
   cursor: pointer;
 }
 
@@ -107,10 +110,20 @@ p {
 
 .contacts_info_title,
 .card_description_title,
-.card_description_price {
+.card_description_price,
+.modal_title,
+.total_label,
+.total_price {
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 125%;
+}
+
+.modal_note_text {
+  font-size: 0.625em;
+  font-weight: 600;
+  line-height: 140%;
+  letter-spacing: 0.5%;
 }
 
 /* BUTTONS */
@@ -135,6 +148,17 @@ a {
   padding: 1.125em;
   color: var(--color-icon-reverse);
   border: 1px solid var(--color-border-primary);
+}
+
+.close_modal_btn {
+  border: 1px solid var(--color-text-primary);
+  border-radius: 6.25em;
+  padding: 0.75em;
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 600;
 }
 
 /* LINKS */
@@ -172,7 +196,9 @@ a {
 .header_link,
 .contacts_link,
 .clock_li,
-.tab_title {
+.tab_title,
+.option_badge,
+.option_text {
   font-size: 1rem;
   font-weight: 600;
   line-height: 150%;
@@ -273,7 +299,6 @@ a {
   background: var(--color-border-primary);
 }
 
-.tab_item:hover,
 .active_tab {
   background: var(--color-bg-container);
   color: var(--color-text-inverse);
@@ -301,16 +326,19 @@ a {
   transform: scale(1);
 }
 
-.menu_img_container {
+.menu_img_container,
+.modal_img_container {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 2.5em;
-  max-height: 310px;
+  height: 310px;
+  min-width: 310px;
   overflow: hidden;
 }
 
-.img_card {
+.img_card,
+.modal_img {
   display: block;
   object-fit: cover;
   object-position: center;
@@ -405,6 +433,12 @@ a {
   :root.dark_theme .social_icon_container:hover {
     background: var(--color-bg-page);
   }
+
+  .tab_item:hover,
+  .close_modal_btn:hover {
+    background: var(--color-bg-container);
+    color: var(--color-text-inverse);
+  }
 }
 
 @media (hover: none) {
@@ -424,6 +458,81 @@ a {
     color: var(--color-icon-reverse);
     background: var(--color-bg-container);
   }
+}
+
+/* MODALS */
+.modal_overlay {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg-overlay);
+  z-index: 100;
+}
+
+.modal_container {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  padding: 1em;
+  gap: 1.25em;
+  background: var(--color-bg-page);
+  border-radius: 2.5em;
+  cursor: default;
+}
+
+.modal_content,
+.option_group {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_text {
+  margin-top: 0.75em;
+}
+.modal_content {
+  gap: 1.25em;
+}
+
+.option_group {
+  gap: 0.5em;
+}
+
+.option_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.option_badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--color-border-primary);
+}
+
+.option_badge {
+  color: var(--color-text-primary);
+}
+
+.total_row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal_note {
+  display: flex;
+  gap: 0.75em;
+  padding: 0.25em 0;
+}
+
+.modal_note_icon {
+  min-width: 16px;
+  min-height: 16px;
 }
 
 /* RESPONSIBILITY */
@@ -549,12 +658,24 @@ a {
   .menu_grid {
     gap: 2.2em 0;
   }
+
+  .modal_container {
+    max-width: 90%;
+  }
 }
 
 @media (max-width: 767px) {
   .menu_title,
   .contacts_title {
     font-size: 2.8rem;
+  }
+
+  .modal_container {
+    max-width: 90%;
+  }
+
+  .modal_img_container {
+    display: none;
   }
 }
 
@@ -595,6 +716,7 @@ a {
   display: none;
 }
 
-.menu_open {
+.menu_open,
+.modal_open {
   overflow: hidden;
 }

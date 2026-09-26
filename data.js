@@ -7,7 +7,8 @@ export const menuData = [
       "Fragrant black coffee with Jameson Irish whiskey and whipped milk",
     price: 7.0,
     size: ["200 ml", "300 ml", "400 ml"],
-    additives: ["Sugar", "Lemon", "Syrup"],
+    additives: ["Sugar", "Cinnamon", "Syrup"],
+    id: 1,
   },
   {
     category: "Coffee",
@@ -17,7 +18,8 @@ export const menuData = [
       "Classic coffee with milk and Kahlua liqueur under a cap of frothed milk",
     price: 7.0,
     size: ["200 ml", "300 ml", "400 ml"],
-    additives: ["Sugar", "Lemon", "Syrup"],
+    additives: ["Sugar", "Cinnamon", "Syrup"],
+    id: 2,
   },
   {
     category: "Coffee",
@@ -26,7 +28,8 @@ export const menuData = [
     description: "Espresso with frothed milk, cream and aromatic honey",
     price: 5.5,
     size: ["200 ml", "300 ml", "400 ml"],
-    additives: ["Sugar", "Lemon", "Syrup"],
+    additives: ["Sugar", "Cinnamon", "Syrup"],
+    id: 3,
   },
   {
     category: "Coffee",
@@ -35,7 +38,8 @@ export const menuData = [
     description: "Cappuccino with soft thick foam in summer version with ice",
     price: 5.0,
     size: ["200 ml", "300 ml", "400 ml"],
-    additives: ["Sugar", "Lemon", "Syrup"],
+    additives: ["Sugar", "Cinnamon", "Syrup"],
+    id: 4,
   },
   {
     category: "Coffee",
@@ -44,7 +48,8 @@ export const menuData = [
     description: "Classic black coffee",
     price: 4.5,
     size: ["200 ml", "300 ml", "400 ml"],
-    additives: ["Sugar", "Lemon", "Syrup"],
+    additives: ["Sugar", "Cinnamon", "Syrup"],
+    id: 5,
   },
   {
     category: "Coffee",
@@ -54,7 +59,8 @@ export const menuData = [
       "Espresso coffee with the addition of steamed milk and dense milk foam",
     price: 5.5,
     size: ["200 ml", "300 ml", "400 ml"],
-    additives: ["Sugar", "Lemon", "Syrup"],
+    additives: ["Sugar", "Cinnamon", "Syrup"],
+    id: 6,
   },
   {
     category: "Coffee",
@@ -63,7 +69,8 @@ export const menuData = [
     description: "Espresso with frothed milk and chocolate",
     price: 5.5,
     size: ["200 ml", "300 ml", "400 ml"],
-    additives: ["Sugar", "Lemon", "Syrup"],
+    additives: ["Sugar", "Cinnamon", "Syrup"],
+    id: 7,
   },
   {
     category: "Coffee",
@@ -72,7 +79,8 @@ export const menuData = [
     description: "Fragrant black coffee with cognac and whipped cream",
     price: 6.5,
     size: ["200 ml", "300 ml", "400 ml"],
-    additives: ["Sugar", "Lemon", "Syrup"],
+    additives: ["Sugar", "Cinnamon", "Syrup"],
+    id: 8,
   },
   {
     category: "Tea",
@@ -83,6 +91,7 @@ export const menuData = [
     price: 4.5,
     size: ["200 ml", "300 ml", "400 ml"],
     additives: ["Sugar", "Lemon", "Syrup"],
+    id: 9,
   },
   {
     category: "Tea",
@@ -92,6 +101,7 @@ export const menuData = [
     price: 5.0,
     size: ["200 ml", "300 ml", "400 ml"],
     additives: ["Sugar", "Lemon", "Syrup"],
+    id: 10,
   },
   {
     category: "Tea",
@@ -101,6 +111,7 @@ export const menuData = [
     price: 5.0,
     size: ["200 ml", "300 ml", "400 ml"],
     additives: ["Sugar", "Lemon", "Syrup"],
+    id: 11,
   },
   {
     category: "Tea",
@@ -111,6 +122,7 @@ export const menuData = [
     price: 5.5,
     size: ["200 ml", "300 ml", "400 ml"],
     additives: ["Sugar", "Lemon", "Syrup"],
+    id: 12,
   },
   {
     category: "Dessert",
@@ -121,6 +133,7 @@ export const menuData = [
     price: 3.5,
     size: ["50 g", "100 g", "200 g"],
     additives: ["Berries", "Nuts", "Jam"],
+    id: 13,
   },
   {
     category: "Dessert",
@@ -130,6 +143,7 @@ export const menuData = [
     price: 4.0,
     size: ["50 g", "100 g", "200 g"],
     additives: ["Berries", "Nuts", "Jam"],
+    id: 14,
   },
   {
     category: "Dessert",
@@ -140,6 +154,7 @@ export const menuData = [
     price: 4.5,
     size: ["50 g", "100 g", "200 g"],
     additives: ["Berries", "Nuts", "Jam"],
+    id: 15,
   },
   {
     category: "Dessert",
@@ -150,6 +165,7 @@ export const menuData = [
     price: 4.0,
     size: ["50 g", "100 g", "200 g"],
     additives: ["Berries", "Nuts", "Jam"],
+    id: 16,
   },
   {
     category: "Dessert",
@@ -159,6 +175,7 @@ export const menuData = [
     price: 4.5,
     size: ["50 g", "100 g", "200 g"],
     additives: ["Berries", "Nuts", "Jam"],
+    id: 17,
   },
   {
     category: "Dessert",
@@ -168,6 +185,7 @@ export const menuData = [
     price: 4.5,
     size: ["50 g", "100 g", "200 g"],
     additives: ["Berries", "Nuts", "Jam"],
+    id: 18,
   },
   {
     category: "Dessert",
@@ -177,6 +195,7 @@ export const menuData = [
     price: 5.5,
     size: ["50 g", "100 g", "200 g"],
     additives: ["Berries", "Nuts", "Jam"],
+    id: 19,
   },
   {
     category: "Dessert",
@@ -187,5 +206,6 @@ export const menuData = [
     price: 6.5,
     size: ["50 g", "100 g", "200 g"],
     additives: ["Berries", "Nuts", "Jam"],
+    id: 20,
   },
 ];
