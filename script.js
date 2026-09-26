@@ -1,6 +1,7 @@
 import { menuData } from "./data.js";
 
 let selectedCategory = "Coffee";
+let currentProduct = null;
 
 //Check saved theme
 const themeSwitch = document.querySelector(".theme_switch");
@@ -133,7 +134,10 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && headerList.classList.contains("active_menu")) {
     closeBurgerMenu();
   }
-  if (event.key === "Escape" && document.body.classList.contains("modal_open")) {
+  if (
+    event.key === "Escape" &&
+    document.body.classList.contains("modal_open")
+  ) {
     closeModal();
   }
 });
@@ -243,28 +247,32 @@ if (menuGrid) {
   menuGrid.addEventListener("click", openModal);
 }
 
-modalContainer.addEventListener("click", (e) => {
-  if(e.target.closest('.close_modal_btn')) {
-    closeModal();
-  }
-})
-
-modalOverlay.addEventListener("click", (e) => {
-  if(!e.target.closest('.modal_container')) {
-    closeModal();
-  }
-})
+if (modalContainer) {
+  modalOverlay.addEventListener("click", (e) => {
+    if (!e.target.closest(".modal_container")) {
+      closeModal();
+    }
+    if (e.target.closest(".close_modal_btn")) {
+      closeModal();
+    }
+    if (e.target.closest(".tab_item")) {
+      changeModalTabs(e);
+    }
+  });
+}
 
 function openModal(e) {
-    const card = e.target.closest(".menu_card");
+  const card = e.target.closest(".menu_card");
 
-    if (!card) return;
+  if (!card) return;
 
-    const id = Number(card.dataset.id);
-    const product = menuData.find((item) => item.id === id);
+  const id = Number(card.dataset.id);
+  const product = menuData.find((item) => item.id === id);
 
-    modalOverlay.style.display = "flex";
-    modalContainer.innerHTML = `
+  currentProduct = product;
+
+  modalOverlay.style.display = "flex";
+  modalContainer.innerHTML = `
         <div class="modal_img_container">
               <img class="modal_img" src="${product.image}">
             </div>
@@ -275,16 +283,16 @@ function openModal(e) {
               </div>
               <div class="option_group">
                 <p class="option_title">Size</p>
-                <div class="option_list">
-                  <button class="tab_item active_tab">
+                <div class="option_list sizes_list">
+                  <button class="tab_item active_tab" data-price="0">
                     <span class="option_badge">S</span>
                     <span class="option_text">${product.size[0]}</span>
                   </button>
-                  <button class="tab_item">
+                  <button class="tab_item" data-price="0.5">
                     <span class="option_badge">M</span>
                     <span class="option_text">${product.size[1]}</span>
                   </button>
-                  <button class="tab_item">
+                  <button class="tab_item" data-price="1">
                     <span class="option_badge">L</span>
                     <span class="option_text">${product.size[2]}</span>
                   </button>
@@ -292,16 +300,16 @@ function openModal(e) {
               </div>
               <div class="option_group">
                 <p class="option_title">Additives</p>
-                <div class="option_list">
-                  <button class="tab_item">
+                <div class="option_list additives_list">
+                  <button class="tab_item" data-price="0.5">
                     <span class="option_badge">1</span>
                     <span class="option_text">${product.additives[0]}</span>
                   </button>
-                  <button class="tab_item">
+                  <button class="tab_item" data-price="0.5">
                     <span class="option_badge">2</span>
                     <span class="option_text">${product.additives[1]}</span>
                     </button>
-                  <button class="tab_item">
+                  <button class="tab_item" data-price="0.5">
                     <span class="option_badge">3</span>
                     <span class="option_text">${product.additives[2]}</span>
                   </button>
@@ -331,10 +339,49 @@ function openModal(e) {
               <button class="close_modal_btn">Close</button>
             </div> 
         `;
-        document.body.classList.add("modal_open");
+  document.body.classList.add("modal_open");
 }
 
 function closeModal() {
-    modalOverlay.style.display = "none";
-    document.body.classList.remove("modal_open");
+  modalOverlay.style.display = "none";
+  document.body.classList.remove("modal_open");
+}
+
+// Modals: Toggle Tabs(size, Additives)
+function changeModalTabs(e) {
+  const button = e.target.closest(".tab_item");
+
+  if (!button) return;
+
+  const optionList = button.closest(".option_list");
+
+  if (optionList.classList.contains("sizes_list")) {
+    const tabsItem = optionList.querySelectorAll(".tab_item");
+
+    tabsItem.forEach((item) => {
+      item.classList.remove("active_tab");
+      item.disabled = false;
+    });
+
+    button.classList.add("active_tab");
+    button.disabled = true;
+  }
+
+  if (optionList.classList.contains("additives_list")) {
+    button.classList.toggle("active_tab");
+  }
+  updateTotalPrice(currentProduct);
+}
+
+function updateTotalPrice(product) {
+  const totalPrice = document.querySelector(".total_price");
+  let total = Number(product.price);
+
+  const activeTabs = modalContainer.querySelectorAll(".active_tab");
+
+  activeTabs.forEach((tab) => {
+    total += Number(tab.dataset.price);
+  });
+
+  totalPrice.textContent = `$${total.toFixed(2)}`;
 }
